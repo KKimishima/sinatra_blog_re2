@@ -4,9 +4,17 @@ Bundler.require
 
 require 'sinatra/base'
 require 'sinatra/reloader'
-# require "./blog"
+
+require "./blog"
 # まとめて依存をぶっこむ
 Dir.glob('./{lib,controllers}/*.rb').each {|file| require file}
+
+if ENV["URL"] and ENV["DATABASE_URL"]
+  GithubHook.disable :autopull
+else
+  require 'rack/cache'
+  use Rack::Cache
+end
 
 
 run Blog

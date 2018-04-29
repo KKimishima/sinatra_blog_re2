@@ -17,6 +17,7 @@ class Blog <Sinatra::Base
   # 外のフォルダにアセットブログ記事を保存
   set :root , File.expand_path("../../",__FILE__)
   set :articles, []
+  set :app_file, __FILE__
 
   # markdownテスト
   # get ("/"){markdown "# Markdown  \n - hoge \n  - hoge"}

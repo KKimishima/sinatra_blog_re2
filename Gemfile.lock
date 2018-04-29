@@ -5,6 +5,8 @@ GEM
     multi_json (1.13.1)
     mustermann (1.0.2)
     rack (2.0.5)
+    rack-cache (1.7.1)
+      rack (>= 0.4)
     rack-protection (2.0.1)
       rack
     rdiscount (2.2.0.1)
@@ -26,6 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack-cache (~> 1.6, >= 1.6.1)
   rdiscount
   sinatra
   sinatra-contrib
