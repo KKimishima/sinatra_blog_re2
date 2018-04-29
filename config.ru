@@ -7,12 +7,14 @@ require 'sinatra/reloader'
 
 # require "./blog"
 # まとめて依存をぶっこむ
-$LOAD_PATH.unshift("lib")
+# $LOAD_PATH.unshift("lib")
 Dir.glob('./{lib,controllers}/*.rb').each {|file| require file}
 
-if ENV["URL"] and ENV["DATABASE_URL"]
+# herokuの場合
+# if ENV["URL"] and ENV["DATABASE_URL"]
   GithubHook.disable :autopull
-else
+# elsif Blog.production?
+if Blog.production?
   require 'rack/cache'
   use Rack::Cache
 end
