@@ -11,12 +11,12 @@ require 'sinatra/reloader'
 Dir.glob('./{lib,controllers}/*.rb').each {|file| require file}
 
 # herokuの場合
-if ENV["URL"] and ENV["DATABASE_URL"]
-  GithubHook.disable :autopull
+# if ENV["URL"] and ENV["DATABASE_URL"]
+#   GithubHook.disable :autopull
+# # elsif Blog.production?
 # elsif Blog.production?
-elsif Blog.production?
-  require 'rack/cache'
-  use Rack::Cache
-end
+#   require 'rack/cache'
+#   use Rack::Cache
+# end
 
 run Blog
