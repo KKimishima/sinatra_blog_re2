@@ -15,7 +15,7 @@ class GithubHook < Sinatra::Base
 
   # 本番でぷるに反応
   set (:autopull){ production? }
-  # parse_git
+  parse_git
 
   before do
     cache_control :public, :must_revalidate
@@ -27,10 +27,10 @@ class GithubHook < Sinatra::Base
     # settings.parse_git
     app.settings.reset!
     load app.settings.app_file
-    # stderrをstdoutに出力してすべてを表示するようにする
-    # if settings.autopull?
-    #   `git pull 2>&1`
-    # else
+    #stderrをstdoutに出力してすべてを表示するようにする
+    if settings.autopull?
+      `git pull 2>&1`
+    else
       "OK"
     end
   end
