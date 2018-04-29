@@ -1,0 +1,23 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <article>
+      <header>
+        <h1 class="card-title">
+            <%= article.title %>
+        </h1>
+        <time class="timeago" datetime="<%= article.date.xmlschema %>">
+          <%= article.date.strftime "%Y/%m/%d" %>
+        </time>
+<!--        <section class="card-text">-->
+          <section class="post-text">
+<!--          <p class="card-text">-->
+            <%= markdown article.content %>
+<!--          </p>-->
+        </section>
+        <a href="<%= url(article.slug) %>" class="btn btn-primary move-btn">Read More &rarr;</a>
+      </header>
+    </article>
+  </div>
+</div>
+
+
